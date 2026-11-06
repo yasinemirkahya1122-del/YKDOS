@@ -38,7 +38,7 @@
 
 ### 1. Repoyu Klonlayın
 ```bash
-git clone https://github.com/KULLANICI_ADINIZ/ykdos.git
+git clone https://github.com/yasinemirkahya1122-del/YKDOS.git
 cd ykdos
 ```
 
