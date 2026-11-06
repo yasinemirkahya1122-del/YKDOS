@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YKDOS</title>
+<style>
+:root{--bg:#02050b;--tx:#fff;--mu:#9fb4d3;--ac:#4aa3ff;--bd:rgba(120,170,255,.22);--cd:rgba(14,26,48,.55);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:radial-gradient(ellipse at 80% 10%,#0c1a33 0,transparent 50%),radial-gradient(ellipse at 10% 60%,#08142a 0,transparent 50%),var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+svg{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;gap:40px;height:90px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:18px;cursor:pointer;font-size:36px;font-weight:800;letter-spacing:1px;background:none;border:0;color:#fff}
+.lc{width:62px;height:62px;border-radius:50%;border:1px solid var(--bd);display:grid;place-items:center;background:radial-gradient(circle,#1b2c4d,#0a1222);font-size:34px;color:#b8d4ff}
+.nl{display:flex;gap:44px}
+.nl button{background:none;border:0;color:var(--mu);font-size:15px;display:flex;gap:8px;align-items:center;padding:8px 0;cursor:pointer;border-bottom:2px solid transparent;font-family:inherit}
+.nl button.on{color:#fff;font-weight:600;border-color:var(--ac)}
+.nl button:hover{color:#fff}
+.view{display:none;padding:34px 0 40px}.view.on{display:block}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.eb{letter-spacing:5px;font-size:12px;color:var(--mu);margin-bottom:14px}
+h1{font-size:40px;line-height:1.25}h1 span{color:var(--ac)}
+.hero p{margin-top:12px;color:#dbe7fb;line-height:1.55;font-size:16px}
+.cloud{width:380px;max-width:40%;font-size:200px;color:#9cc7ff;filter:drop-shadow(0 0 30px #2a6dd1);text-align:center;line-height:1}
+.cloud svg{stroke-width:.7;fill:rgba(90,150,240,.25)}
+.grid{display:grid;grid-template-columns:1.9fr 1fr;gap:28px;margin-top:26px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:18px;padding:22px;backdrop-filter:blur(8px)}
+.dz{border:1.5px dashed rgba(90,140,230,.5);border-radius:14px;height:100%;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;transition:.2s;padding:20px}
+.dz.ov{background:rgba(74,163,255,.12);border-color:var(--ac)}
+.dz .ic{font-size:50px;color:#b8d4ff}.dz b{color:#9cc7ff;font-size:18px;font-weight:600}.dz small{color:var(--mu)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:rgba(40,80,150,.35);border:1px solid rgba(130,180,255,.6);color:#fff;border-radius:10px;padding:13px 40px;font-size:16px;cursor:pointer;font-family:inherit;box-shadow:0 0 18px rgba(74,163,255,.2)}
+.btn:hover{background:rgba(60,110,200,.5)}
+.st{display:flex;flex-direction:column;gap:14px}
+.sr{display:flex;align-items:center;gap:22px}
+.ring{width:120px;height:120px;border-radius:50%;border:3px solid rgba(90,150,240,.3);border-top-color:var(--ac);border-right-color:var(--ac);display:grid;place-items:center;font-size:52px;color:#b8d4ff;flex:none}
+.sr small{color:#b8d4ff;font-size:16px;display:block}.sr h2{font-size:32px;margin:4px 0}
+.bar{height:6px;border-radius:4px;background:rgba(255,255,255,.12)}.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:4px}
+.sp{display:flex;justify-content:space-between;font-size:14px}.sp div:last-child{text-align:right}.sp b{display:block;font-size:17px;margin-top:4px}
+.inf{border:1px solid var(--bd);border-radius:10px;padding:12px 16px;font-size:12.5px;color:#cfe0fa;display:flex;gap:10px;align-items:center}
+.pt{font-size:28px;margin-bottom:20px}
+.list{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.fi{display:flex;align-items:center;gap:14px;border:1px solid var(--bd);border-radius:12px;padding:12px 16px;background:rgba(255,255,255,.03)}
+.fi span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fi small{color:var(--mu)}
+.fi-actions{display:flex;gap:10px}.fi button, .fi a{background:none;border:0;color:var(--mu);cursor:pointer;font-size:18px;text-decoration:none;display:flex;align-items:center}
+.fi button:hover, .fi a:hover{color:#fff}
+.fi button.del:hover{color:#ff8a8a}
+.em{text-align:center;padding:70px 20px;color:var(--mu)}.em svg{font-size:56px;margin-bottom:14px;color:#6f8fbf}.em h3{color:#fff;font-size:20px;margin-bottom:6px}
+footer{border-top:1px solid var(--bd);margin-top:10px}
+.fo{display:flex;justify-content:space-between;align-items:center;height:90px;font-size:12.5px;color:var(--mu);flex-wrap:wrap;gap:10px}
+.fo .l{display:flex;align-items:center;gap:14px}.fo .lc{width:48px;height:48px;font-size:26px}.fo strong{color:#fff;font-size:18px;letter-spacing:1px}
+@media(max-width:900px){.grid,.bt{grid-template-columns:1fr}.cloud{display:none}h1{font-size:30px}nav{gap:16px;height:auto;padding:14px 0}.nl{gap:20px}}
+</style></head><body>
+<svg style="display:none"><defs>
+<symbol id="cl" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.6 4.7 4.7 0 0 1 17.5 18"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19v-8M8.5 14.5 12 11l3.5 3.5"/></symbol>
+<symbol id="fo" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+</defs></svg>
+<header><div class="w"><nav>
+<button class="logo" onclick="go('home')"><span class="lc"><svg><use href="#cl"/></svg></span>YKDOS</button>
+<div class="nl">
+<button data-v="home" class="on" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v10h5v-6h4v6h5V10" fill="currentColor"/></svg>Ana Sayfa</button>
+<button data-v="files" onclick="go('files')"><svg><use href="#fo"/></svg>Dosyalarım</button>
+</div></nav></div></header>
+
+<main class="w">
+<section class="view on" id="v-home">
+<div class="hero"><div><div class="eb">GÜVENLİ &nbsp;•&nbsp; HIZLI &nbsp;•&nbsp; KOLAY</div>
+<h1>Dosyalarını Güvenle Sakla,<br><span>Her Yerden Eriş.</span></h1>
+<p>YKDOS ile dosyalarını kolayca yükle, paylaş ve dilediğin zaman indir.<br>Hızlı, güvenli ve tamamen senin kontrolünde.</p></div>
+<div class="cloud"><svg viewBox="0 0 24 24"><use href="#cl"/><path d="M12 17v-6M9 13.5l3-3 3 3" stroke-width="1.4"/></svg></div></div>
+<div class="grid">
+<div class="card"><div class="dz" data-drop="main"><div class="ic"><svg viewBox="0 0 24 24"><use href="#cl"/><path d="M12 17v-6M9 13.5l3-3 3 3"/></svg></div>
+<b>Dosyalarını buraya sürükle ve bırak</b><small>veya</small>
+<button class="btn" data-pick><svg><use href="#fo"/></svg>Dosya Seç</button>
+<small style="font-size:12px;margin-top:8px">Maksimum dosya boyutu: <b style="color:#fff;font-size:12px">1 GB</b></small>
+<input type="file" multiple hidden></div></div>
+<div class="card st"><div class="sr"><div class="ring">∞</div><div><small>Toplam Alan</small><h2>Sınırsız</h2><small>Kullanıcı Başına</small></div></div>
+<div class="bar"><i class="used"></i></div>
+<div class="sp"><div>Kullanılan Alan<b class="usedtx">Yükleniyor...</b></div><div>Kalan Alan<b>Sınırsız</b></div></div>
+<div class="bar"></div>
+<div class="inf"><svg viewBox="0 0 24 24" style="font-size:20px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Sınırsız depolama alanı ile dosyalarınızı dilediğiniz kadar sakla.</div></div></div>
+</section>
+
+<section class="view" id="v-files"><h2 class="pt">Dosyalarım</h2>
+<div class="card"><div class="list" id="fl" style="margin:0"></div></div></section>
+
+<footer><div class="w fo"><div class="l"><span class="lc"><svg><use href="#cl"/></svg></span><strong>YKDOS</strong><span style="border-left:1px solid var(--bd);padding-left:14px">Dosyalarınız her zaman güvende.</span></div><div>© 2026 YKDOS. Tüm hakları saklıdır.</div></div></footer>
+
+<script>
+let files = [];
+let sites = [];
+const $ = s => document.querySelector(s);
+
+function go(v) {
+    document.querySelectorAll('.view').forEach(e => e.classList.toggle('on', e.id === 'v-' + v));
+    document.querySelectorAll('.nl button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+    if (v === 'files') fetchFiles();
+    if (v === 'site') fetchSites();
+    window.scrollTo(0, 0);
+}
+
+function fmt(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+    if (n < 1073741824) return (n / 1048576).toFixed(1) + ' MB';
+    return (n / 1073741824).toFixed(2) + ' GB';
+}
+
+async function fetchFiles() {
+    try {
+        const res = await fetch('/api/files');
+        const data = await res.json();
+        files = data.files;
+        renderFiles();
+        updateStats();
+    } catch (err) { console.error(err); }
+}
+
+function updateStats() {
+    const totalBytes = files.reduce((acc, f) => acc + f.size, 0);
+    $('.usedtx').textContent = fmt(totalBytes);$('.used').style.width = totalBytes > 0 ? '5%' : '0%';
+}
+
+function renderFiles() {
+    const l = $('#fl');
+    l.innerHTML = '';
+    if (!files.length) {
+        l.innerHTML = '<div class="em"><svg viewBox="0 0 24 24"><use href="#fo"/></svg><h3>Henüz dosya yok</h3><p>Ana sayfadan dosya yükleyerek başlayabilirsin.</p></div>';
+        return;
+    }
+    files.forEach((f) => {
+        const d = document.createElement('div');
+        d.className = 'fi';
+        d.innerHTML = `<svg viewBox="0 0 24 24" style="font-size:22px;color:#9cc7ff"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></svg><span>${f.name}</span><small>${fmt(f.size)}</small>
+        <div class="fi-actions">
+            <a href="/api/download/${f.id}" title="İndir">⬇️</a>
+            <button class="del" onclick="deleteFile(${f.id})" title="Sil">✕</button>
+        </div>`;
+        l.appendChild(d);
+    });
+}
+
+async function uploadFileToServer(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    alert(`⏳ "${file.name}" yükleniyor...`);
+    try {
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        if (res.ok) { fetchFiles(); alert("✅ Yüklendi!"); }
+        else { const err = await res.json(); alert(`❌ ${err.detail}`); }
+    } catch (err) { alert("❌ Bağlantı hatası!"); }
+}
+
+async function deleteFile(id) {
+    if(!confirm("Bu dosyayı listeden kaldırmak istediğine emin misin?")) return;
+    await fetch('/api/file/' + id, { method: 'DELETE' });
+    fetchFiles();
+}
+
+// Sürükle Bırak (Ana Sayfa)
+const mainDz = document.querySelector('[data-drop="main"]');
+if (mainDz) {
+    const inp = mainDz.querySelector('input');
+    mainDz.querySelector('[data-pick]').onclick = () => inp.click();
+    inp.onchange = () => { [...inp.files].forEach(uploadFileToServer); inp.value = ''; };
+    ['dragenter', 'dragover'].forEach(e => mainDz.addEventListener(e, x => { x.preventDefault(); mainDz.classList.add('ov'); }));
+    ['dragleave', 'drop'].forEach(e => mainDz.addEventListener(e, x => { x.preventDefault(); mainDz.classList.remove('ov'); }));
+    mainDz.addEventListener('drop', x => [...x.dataTransfer.files].forEach(uploadFileToServer));
+}
+
+fetchFiles();
+</script></body></html>
