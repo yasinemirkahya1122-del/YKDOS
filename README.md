@@ -31,7 +31,6 @@
 * 📦 **1 GB Parça Limit Desteği:** Tek seferde 1 GB'a kadar devasa dosyaları sorunsuz yükleme.
 * ⚡ **FastAPI & SQLite Altyapısı:** Yüksek performanslı API end-point'leri ve hafif veritabanı takibi.
 * 🎨 **Karanlık Tema Web Arayüzü:** Modern, mobil uyumlu ve şık `YKDOS.html` dashboard'u.
-* 🌐 **Telegram-Driven Hosting (Deneysel):** Statik web sitelerinizi Telegram üzerinde barındırma desteği.
 
 ---
 
